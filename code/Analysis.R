@@ -1,13 +1,30 @@
-#load data
+# Load and  Read the two files 
+cases_file  <- "C:/Users/samina/Downloads/1data/cases_malaysia_clean.csv"   
+deaths_file <- "C:/Users/samina/Downloads/1data/deaths_malaysia.csv"     
 
-data <- read.csv("C:/Users/samina/Downloads/cases_malaysia_clean.csv")
+cases  <- read.csv(cases_file)
+deaths <- read.csv(deaths_file)
 
-# print(data)
+# Convert date columns
+cases$date  <- as.Date(cases$date)
+deaths$date <- as.Date(deaths$date)
 
-# null value checked
-sum(is.na(data))
+# keep this column date, cases_new ,deaths_new from 2 files 
 
-# any missing values in columns
-colSums(is.na(data))
+cases_clean  <- cases[, c("date", "cases_new")]
+deaths_clean <- deaths[, c("date", "deaths_new")]
 
-summary(data)
+
+# Check columns
+print(names(cases_small))
+print(names(deaths_small))
+
+
+# Merge by date
+merged <- merge(cases_small, deaths_small, by = "date", all = FALSE)
+
+
+# remove rows which has null values 
+merged <- merged[!is.na(merged$cases_new) & !is.na(merged$deaths_new), ]
+
+summary(merged)
