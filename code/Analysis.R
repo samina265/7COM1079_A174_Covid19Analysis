@@ -48,4 +48,23 @@ plot(merged$cases_new, merged$deaths_new,
      pch = 19,
      col = rgb(0,0,1,0.5))
 
+# Bar plot of monthly COVID-19 cases
+merged$month <- format(merged$date, "%Y-%m")
+
+monthly_cases <- tapply(merged$cases_new, merged$month, sum)
+
+barplot(monthly_cases,
+        las = 2,
+        col = "skyblue",
+        main = "Monthly COVID-19 Cases",
+        ylab = "Total Cases")
+
+# Bar plot of monthly COVID-19 deaths
+monthly_deaths <- tapply(merged$deaths_new, merged$month, sum)
+
+barplot(monthly_deaths,
+        las = 2,
+        col = "tomato",
+        main = "Monthly COVID-19 Deaths",
+        ylab = "Total Deaths")
 
