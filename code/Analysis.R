@@ -1,8 +1,6 @@
 # Load and  Read the two files 
-
 cases_file  <- "C:/Users/samina/Downloads/1data/cases_malaysia_clean.csv"
 deaths_file <- "C:/Users/samina/Downloads/1data/deaths_malaysia.csv"
-
 
 cases  <- read.csv(cases_file)
 deaths <- read.csv(deaths_file)
@@ -68,3 +66,13 @@ barplot(monthly_deaths,
         main = "Monthly COVID-19 Deaths",
         ylab = "Total Deaths")
 
+
+# correlation tests Pearson 
+pearson_result = cor.test(merged$cases_new, merged$deaths_new, method="pearson")
+ 
+pearson_r <- pearson_result$estimate
+pearson_p <- pearson_result$p.value
+
+cat("Pearson Correlation Results: \n")
+cat("r =", round(pearson_r, 3), "\n")
+cat("p-value =", format.pval(pearson_p, digits = 3), "\n")
