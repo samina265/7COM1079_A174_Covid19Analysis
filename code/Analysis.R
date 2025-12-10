@@ -1,7 +1,7 @@
 # Load and  Read the two files 
 
-cases_file  <- "C:/Users/sajjad/Downloads/1data/cases_malaysia_clean.csv"
-deaths_file <- "C:/Users/sajjad/Downloads/1data/deaths_malaysia.csv"
+cases_file  <- "C:/Users/samina/Downloads/1data/cases_malaysia_clean.csv"
+deaths_file <- "C:/Users/samina/Downloads/1data/deaths_malaysia.csv"
 
 
 cases  <- read.csv(cases_file)
@@ -39,3 +39,13 @@ hist(merged$deaths_new,
      main = "Histogram of Daily New Deaths",
      xlab = "Daily New Deaths",
      col = "tomato")
+
+#Scatter plot cases_new vs deaths_new 
+plot(merged$cases_new, merged$deaths_new,
+     main = "Daily New Cases vs Daily New Deaths",
+     xlab = "Daily New Cases",
+     ylab = "Daily New Deaths",
+     pch = 19,
+     col = rgb(0,0,1,0.5))
+
+
